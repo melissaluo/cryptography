@@ -1,0 +1,8 @@
+/*******Compiler*******/
+g++
+
+/*******Compiling Commands*******/
+make clean
+make hw2
+
+
