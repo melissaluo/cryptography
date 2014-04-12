@@ -1,0 +1,27 @@
+/*******Compiler*******/
+g++
+
+/*******Compiling Commands*******/
+make clean
+make hw4
+
+
+/*******Running Program Commands Specification**********/
+hw4 keygen -t=period 
+period should be an integer bigger than 0. if input is a decimal, it will be performed a floor operation. Other characters will be turned into 0.
+    
+hw4 crypt -k=keyfile [file]
+keyfile should have correct form. 
+
+hw4 invkey keyfile
+keyfile should have correct form.
+
+hw4 histo -t=period -i=which [file]
+which should be a integer between 1 to period, inclusive.
+
+hw4 solve -l=max_t file
+max_t should be a integer bigger than 0.
+
+
+
+

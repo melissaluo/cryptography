@@ -1,0 +1,17 @@
+/*******Compiler*******/
+g++
+
+/*******Compiling Commands*******/
+make clean
+make hw5
+
+
+/*******Running Program Commands Specification**********/
+hw5 tablecheck -t=tablefile
+hw5 encrypt -k=key -t=tablefile [file]
+hw5 decrypt -k=key -t=tablefile [file]
+hw5 encrypt3 -k=key3 -t=tablefile [file]
+hw5 decrypt3 -k=key3 -t=tablefile [file]
+
+
+
