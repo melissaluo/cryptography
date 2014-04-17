@@ -18,6 +18,7 @@ void inversecheck();
 
 unsigned char hextochar(char c1, char c2);
 void modprod(char *p1, char *p2);
+void circlex(unsigned char* p1_arr, unsigned char* p2_arr, unsigned char* p3_arr);
 void polyCheck(char *p, unsigned char p_arr[], int len);
 unsigned char bigdotbyte(unsigned char a, unsigned char b);
 void keyexpand(char *key,char *tablename, char flag);
@@ -44,6 +45,8 @@ void invoutputword(unsigned char *w, int round_no, const char *step_log);
 void invSubBytes();
 void invShiftRows();
 void invMixColumns();
+
+void inverse(char *poly);
 
 
 

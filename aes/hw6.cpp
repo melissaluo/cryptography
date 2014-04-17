@@ -20,7 +20,6 @@ void errorhandle(const char* msg){
 	exit(1);
 }
 
-
 int main(int argc, char **argv){
 	
 	argc--,argv++;
@@ -127,7 +126,7 @@ int main(int argc, char **argv){
 				}
 			}
 		}
-		
+		tableCheck(tablename);
 		aesencrypt(key,tablename,cin);
 		delete[] key;
 		delete[] tablename;
@@ -168,17 +167,27 @@ int main(int argc, char **argv){
 				}
 			}
 		}
-		
+		tableCheck(tablename);
 		aesdecrypt(key,tablename,cin);
 		delete[] key;
 		delete[] tablename;
 		return 0;
 		
 	}else if(strcmp(*argv,"inverse") == 0){ /*hw6 inverse -p=poly*/
-
-	}else{
-		errorhandle("malformed command!");
-	}
+		char* pos;
 	
+		
+		if( argc != 2){
+			errorhandle("malformed command!");
+		}
+
+		argc--;argv++;
+		if((pos = strstr(*argv,"-p=")) != NULL){
+			pos += 3;
+			inverse(pos);
+		} 
+	}else{
+			errorhandle("malformed command!");
+	}
 	return 0;
 }

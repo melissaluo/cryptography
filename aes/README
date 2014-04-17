@@ -1,0 +1,18 @@
+/*******Compiler*******/
+g++
+
+/*******Compiling Commands*******/
+make clean
+make hw6
+
+
+/*******Running Program Commands Specification**********/
+hw6 tablecheck -t=tablefile
+    hw6 modprod -p1=poly1 -p2=poly2
+    hw6 keyexpand -k=key -t=tablefile
+    hw6 encrypt -k=key -t=tablefile [file]
+    hw6 decrypt -k=key -t=tablefile [file]
+    hw6 inverse -p=poly
+
+
+

@@ -38,8 +38,40 @@ void polyCheck(char *p, unsigned char p_arr[], int len){
 	}
 	
 	for(int i=0;i<8;i+=2){
-		p_arr[3-i/2] = hextochar(p[i],p[i+1]);
+		//p_arr[3-i/2] = hextochar(p[i],p[i+1]);
+		p_arr[i/2] = hextochar(p[i],p[i+1]);
 	}
+}
+
+
+void circlex(unsigned char* p1_arr, unsigned char* p2_arr, unsigned char* p3_arr){
+
+	/***A*B***
+	 * 0321
+	 * 1032
+	 * 2103
+	 * 3210
+	 *********/
+	p3_arr[3] = bigdotbyte(p1_arr[3],p2_arr[3]);
+	p3_arr[3] = p3_arr[3] ^ bigdotbyte(p1_arr[0],p2_arr[2]);
+	p3_arr[3] = p3_arr[3] ^ bigdotbyte(p1_arr[1],p2_arr[1]);
+	p3_arr[3] = p3_arr[3] ^ bigdotbyte(p1_arr[2],p2_arr[0]);
+	
+	p3_arr[2] = bigdotbyte(p1_arr[2],p2_arr[3]);
+	p3_arr[2] = p3_arr[2] ^ bigdotbyte(p1_arr[3],p2_arr[2]);
+	p3_arr[2] = p3_arr[2] ^ bigdotbyte(p1_arr[0],p2_arr[1]);
+	p3_arr[2] = p3_arr[2] ^ bigdotbyte(p1_arr[1],p2_arr[0]);
+	
+	p3_arr[1] = bigdotbyte(p1_arr[1],p2_arr[3]);
+	p3_arr[1] = p3_arr[1] ^ bigdotbyte(p1_arr[2],p2_arr[2]);
+	p3_arr[1] = p3_arr[1] ^ bigdotbyte(p1_arr[3],p2_arr[1]);
+	p3_arr[1] = p3_arr[1] ^ bigdotbyte(p1_arr[0],p2_arr[0]);
+	
+	p3_arr[0] = bigdotbyte(p1_arr[0],p2_arr[3]);
+	p3_arr[0] = p3_arr[0] ^ bigdotbyte(p1_arr[1],p2_arr[2]);
+	p3_arr[0] = p3_arr[0] ^ bigdotbyte(p1_arr[2],p2_arr[1]);
+	p3_arr[0] = p3_arr[0] ^ bigdotbyte(p1_arr[3],p2_arr[0]);
+	
 }
 
 void modprod(char *p1, char *p2){
@@ -51,51 +83,26 @@ void modprod(char *p1, char *p2){
 	polyCheck(p1, p1_arr, 4);
 	polyCheck(p2, p2_arr, 4);
 	
-	//char c1 = hextochar('0','3');
-	bigdotbyte(hextochar('0','1'), hextochar('0','9'));
+	//bigdotbyte(hextochar('0','1'), hextochar('0','9'));
 	
+	circlex(p1_arr,p2_arr,p3_arr);
 	
-	/***A*B***
-	 * 0321
-	 * 1032
-	 * 2103
-	 * 3210
-	 *********/
-	p3_arr[0] = bigdotbyte(p1_arr[0],p2_arr[0]);
-	p3_arr[0] = p3_arr[0] ^ bigdotbyte(p1_arr[3],p2_arr[1]);
-	p3_arr[0] = p3_arr[0] ^ bigdotbyte(p1_arr[2],p2_arr[2]);
-	p3_arr[0] = p3_arr[0] ^ bigdotbyte(p1_arr[1],p2_arr[3]);
-	
-	p3_arr[1] = bigdotbyte(p1_arr[1],p2_arr[0]);
-	p3_arr[1] = p3_arr[1] ^ bigdotbyte(p1_arr[0],p2_arr[1]);
-	p3_arr[1] = p3_arr[1] ^ bigdotbyte(p1_arr[3],p2_arr[2]);
-	p3_arr[1] = p3_arr[1] ^ bigdotbyte(p1_arr[2],p2_arr[3]);
-	
-	p3_arr[2] = bigdotbyte(p1_arr[2],p2_arr[0]);
-	p3_arr[2] = p3_arr[2] ^ bigdotbyte(p1_arr[1],p2_arr[1]);
-	p3_arr[2] = p3_arr[2] ^ bigdotbyte(p1_arr[0],p2_arr[2]);
-	p3_arr[2] = p3_arr[2] ^ bigdotbyte(p1_arr[3],p2_arr[3]);
-	
-	p3_arr[3] = bigdotbyte(p1_arr[3],p2_arr[0]);
-	p3_arr[3] = p3_arr[3] ^ bigdotbyte(p1_arr[2],p2_arr[1]);
-	p3_arr[3] = p3_arr[3] ^ bigdotbyte(p1_arr[1],p2_arr[2]);
-	p3_arr[3] = p3_arr[3] ^ bigdotbyte(p1_arr[0],p2_arr[3]);
 	
 	/*** ouput result ***/
 	
-	for(int i=3;i>=0;i--){
+	for(int i=0;i<4;i++){
 		cout << "{" << setfill('0') << setw(2) << hex << (int)p1_arr[i] << "}";
 	}
 	
 	cout << " CIRCLEX ";
 	
-	for(int i=3;i>=0;i--){
+	for(int i=0;i<4;i++){
 		cout << "{" << setfill('0') << setw(2) << hex << (int)p2_arr[i] << "}";
 	}
 	
 	cout << " = ";
 
-	for(int i=3;i>=0;i--){
+	for(int i=0;i<4;i++){
 		cout << "{" << setfill('0') << setw(2) << hex << (int)p3_arr[i] << "}";
 	}
 	

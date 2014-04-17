@@ -1,8 +1,11 @@
-all: hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o
-	g++ -g -o hw6 hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o
+all: hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o inverse.o
+	g++ -g -o hw6 hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o inverse.o
 
-hw6: hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o
-	g++ -g -o hw6 hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o
+hw6: hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o inverse.o
+	g++ -g -o hw6 hw6.o tablecheck.o modprod.o keyexpand.o encrypt.o decrypt.o inverse.o
+
+inverse.o:
+	g++ -c -g -Wall inverse.cpp hw6.h
 
 decrypt.o:
 	g++ -c -g -Wall decrypt.cpp hw6.h
