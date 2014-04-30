@@ -1,0 +1,20 @@
+/*******Compiler*******/
+g++
+
+/*******Compiling Commands*******/
+make clean
+make hw7
+
+
+/*******Running Program Commands Specification**********/
+hw7 primes -n=maxval
+hw7 trialdiv -n=number -p=primesfile
+hw7 millerrabin -n=number -t=maxitr -p=primesfile
+hw7 rndsearch -k=numbits -t=maxitr -p=primesfile -r=rndfile
+hw7 maurer -k=numbits -p=primesfile -r=rndfile
+
+if running under development environment, linker should add options below:
+-L/usr/lib -lssl -lcrypto
+
+
+
